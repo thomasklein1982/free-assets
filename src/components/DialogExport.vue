@@ -39,7 +39,10 @@ export default {
           if(this.mode===3){
             s+="App.";
           }
-          s+="loadAsset("+JSON.stringify(url)+","+JSON.stringify(a.name)+")"
+          s+="loadAsset("+JSON.stringify(url)+","+JSON.stringify(a.name)+")";
+          if(this.mode===3){
+            s+=";";
+          }
         }
         s+="\n";
       }

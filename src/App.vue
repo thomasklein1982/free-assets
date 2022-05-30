@@ -10,7 +10,7 @@ import Main from './components/Main.vue'
 export default{
   data(){
     return {
-      version: 4
+      version: 5
     };
   },
   components: {

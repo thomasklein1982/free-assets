@@ -54,9 +54,24 @@ export default{
     assets(){
       this.more=false;
       let array=[];
+      let words=this.search.split(/[ ,;]+/);
       for(let i=0;i<assets[this.type].length;i++){
         let a=assets[this.type][i];
-        if(a.name.indexOf(this.search)>=0 && !this.isSelected(a)){
+        if(this.isSelected(a)) continue;
+        let okay=a.name.indexOf(this.search)>=0;
+        if(a.tags){
+          for(let j=0;j<a.tags.length;j++){
+            let tag=a.tags[j];
+            for(let k=0;k<words.length;k++){
+              let w=words[k];
+              if(w.length>0 && tag.indexOf(w)>=0){
+                okay=true;
+                break;
+              }
+            }
+          }
+        }
+        if(okay){
           if(array.length>=this.page*this.perPage){
             this.more=true;
             return array;
